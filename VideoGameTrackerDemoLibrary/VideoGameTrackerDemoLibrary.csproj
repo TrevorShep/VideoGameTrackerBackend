@@ -7,11 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Commands\" />
+    <PackageReference Include="MediatR" Version="12.2.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="MediatR" Version="12.2.0" />
+    <Folder Include="Commands\Update\" />
+    <Folder Include="Handlers\Commands\Update\" />
   </ItemGroup>
 
 </Project>

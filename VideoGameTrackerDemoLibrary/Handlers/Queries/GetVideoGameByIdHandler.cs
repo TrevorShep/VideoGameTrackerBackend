@@ -8,7 +8,7 @@ using VideoGameTrackerDemoLibrary.Models;
 using VideoGameTrackerDemoLibrary.Queries;
 using VideoGameTrackerDemoLibrary.Repositories.Interfaces;
 
-namespace VideoGameTrackerDemoLibrary.Handlers
+namespace VideoGameTrackerDemoLibrary.Handlers.Queries
 {
     public class GetVideoGameByIdHandler : IRequestHandler<GetVideoGameByIdQuery, VideoGameModel>
     {

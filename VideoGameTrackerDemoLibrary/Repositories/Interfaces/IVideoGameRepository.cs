@@ -11,6 +11,8 @@ namespace VideoGameTrackerDemoLibrary.Repositories.Interfaces
     {
         List<VideoGameModel> GetVideoGames();
 
-        VideoGameModel InsertVideoGame(string name, string description, DateTime date);
+        VideoGameModel InsertVideoGame(string name, string description, string date);
+
+        string DeleteVideoGame(int id);
     }
 }

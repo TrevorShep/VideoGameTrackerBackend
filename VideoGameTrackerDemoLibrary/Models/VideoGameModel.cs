@@ -14,6 +14,6 @@ namespace VideoGameTrackerDemoLibrary.Models
 
         public string Description { get; set; } = string.Empty;
 
-        public DateTime ReleaseDate { get; set; }
+        public string ReleaseDate { get; set; } = string.Empty;
     }
 }

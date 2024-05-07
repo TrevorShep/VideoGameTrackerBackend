@@ -1,5 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using VideoGameTrackerDemoLibrary.Commands.Create;
+using VideoGameTrackerDemoLibrary.Commands.Delete;
 using VideoGameTrackerDemoLibrary.Models;
 using VideoGameTrackerDemoLibrary.Queries;
 
@@ -34,8 +36,9 @@ namespace VideoGameTrackerBackend.Controllers
 
         // POST api/<VideoGamesController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<VideoGameModel> Post([FromBody] VideoGameModel value)
         {
+            return await _mediator.Send(new InsertVideoGameCommand(value.Name, value.Description, value.ReleaseDate));
         }
 
         // PUT api/<VideoGamesController>/5
@@ -46,8 +49,9 @@ namespace VideoGameTrackerBackend.Controllers
 
         // DELETE api/<VideoGamesController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task<string> Delete(int id)
         {
+            return await _mediator.Send(new DeleteVideoGameCommand(id));
         }
     }
 }
