@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using VideoGameTrackerDemoLibrary.Commands.Create;
 using VideoGameTrackerDemoLibrary.Commands.Delete;
+using VideoGameTrackerDemoLibrary.Commands.Update;
 using VideoGameTrackerDemoLibrary.Models;
 using VideoGameTrackerDemoLibrary.Queries;
 
@@ -22,7 +23,7 @@ namespace VideoGameTrackerBackend.Controllers
 
         // GET: api/<VideoGamesController>
         [HttpGet]
-        public async Task<List<VideoGameModel>> GetVideoGame()
+        public async Task<List<VideoGameModel>> GetAllVideoGames()
         {
             return await _mediator.Send(new GetAllVideoGamesQuery());
         }
@@ -36,20 +37,21 @@ namespace VideoGameTrackerBackend.Controllers
 
         // POST api/<VideoGamesController>
         [HttpPost]
-        public async Task<VideoGameModel> Post([FromBody] VideoGameModel value)
+        public async Task<VideoGameModel> PostVideoGame([FromBody] VideoGameModel value)
         {
             return await _mediator.Send(new InsertVideoGameCommand(value.Name, value.Description, value.ReleaseDate));
         }
 
         // PUT api/<VideoGamesController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public async Task<string> UpdateVideoGame(int id, [FromBody] VideoGameModel value)
         {
+            return await _mediator.Send(new UpdateVideoGameCommand(id, value.Name, value.Description, value.ReleaseDate));
         }
 
         // DELETE api/<VideoGamesController>/5
         [HttpDelete("{id}")]
-        public async Task<string> Delete(int id)
+        public async Task<string> DeleteVideoGame(int id)
         {
             return await _mediator.Send(new DeleteVideoGameCommand(id));
         }

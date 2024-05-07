@@ -13,6 +13,8 @@ namespace VideoGameTrackerDemoLibrary.Repositories.Interfaces
 
         VideoGameModel InsertVideoGame(string name, string description, string date);
 
+        string UpdateVideoGame(int id, string name, string description, string date);
+
         string DeleteVideoGame(int id);
     }
 }

@@ -31,6 +31,21 @@ namespace VideoGameTrackerDemoLibrary.Repositories
             return videoGameToInsert;
         }
 
+        public string UpdateVideoGame(int id, string name, string description, string date)
+        {
+            // Previous values for the return string
+            string previousName = _videoGames[id - 1].Name;
+            string previousDescription = _videoGames[id - 1].Description;
+            string previousDate = _videoGames[id - 1].ReleaseDate;
+
+            _videoGames[id - 1].Name = name;
+            _videoGames[id - 1].Description = description;
+            _videoGames[id - 1].ReleaseDate = date;
+            return $"Video game was updated\n\n"
+                   + $"Previous values:\nName: {previousName}\nDescription: {previousDescription}\nRelease Date: {previousDate}\n\n"
+                   + $"New values:\nName: {name}\nDescription: {description}\nRelease Date: {date}";
+        }
+
         public string DeleteVideoGame(int id)
         {
             VideoGameModel videoGameToDelete = _videoGames[id - 1];
