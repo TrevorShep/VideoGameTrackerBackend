@@ -1,0 +1,6 @@
+@VideoGameTrackerBackend_HostAddress = http://localhost:5100
+
+GET {{VideoGameTrackerBackend_HostAddress}}/
+Accept: application/json
+
+###
