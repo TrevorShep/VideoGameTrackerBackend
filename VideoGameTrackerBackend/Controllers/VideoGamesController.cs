@@ -20,16 +20,16 @@ namespace VideoGameTrackerBackend.Controllers
 
         // GET: api/<VideoGamesController>
         [HttpGet]
-        public async Task<List<VideoGameModel>> Get()
+        public async Task<List<VideoGameModel>> GetVideoGame()
         {
             return await _mediator.Send(new GetAllVideoGamesQuery());
         }
 
         // GET api/<VideoGamesController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public async Task<VideoGameModel> GetVideoGameById(int id)
         {
-            return "value";
+            return await _mediator.Send(new GetVideoGameByIdQuery(id));
         }
 
         // POST api/<VideoGamesController>
