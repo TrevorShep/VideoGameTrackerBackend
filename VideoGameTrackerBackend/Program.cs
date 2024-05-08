@@ -1,6 +1,9 @@
 using VideoGameTrackerDemoLibrary;
 using VideoGameTrackerDemoLibrary.Repositories;
 using VideoGameTrackerDemoLibrary.Repositories.Interfaces;
+using VideoGameTrackerLibrary.Repositories;
+using VideoGameTrackerLibrary.Repositories.Interfaces;
+using VideoGameTrackerLibrary;
 
 namespace VideoGameTrackerBackend
 {
@@ -15,9 +18,14 @@ namespace VideoGameTrackerBackend
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
-            // MediatR services
+            // MediatR services for VideoGameTrackerDemoLibrary
             builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(typeof(VideoGameTrackerDemoLibraryEntryPoint).Assembly));
             builder.Services.AddSingleton<IVideoGameRepository, VideoGameRepository>();
+
+            // MediatR and HttpClientFactory services for VideoGameTrackerLibrary
+            builder.Services.AddHttpClient();
+            builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(typeof(VideoGameTrackerLibraryEntryPoint).Assembly));
+            builder.Services.AddScoped<IMobyGamesRepository, MobyGamesRepository>();
 
             var app = builder.Build();
 
