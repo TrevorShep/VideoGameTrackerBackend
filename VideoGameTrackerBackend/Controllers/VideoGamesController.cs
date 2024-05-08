@@ -5,8 +5,7 @@ using VideoGameTrackerDemoLibrary.Commands.Delete;
 using VideoGameTrackerDemoLibrary.Commands.Update;
 using VideoGameTrackerDemoLibrary.Models;
 using VideoGameTrackerDemoLibrary.Queries;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+using VideoGameTrackerLibrary.Queries;
 
 namespace VideoGameTrackerBackend.Controllers
 {
@@ -21,11 +20,12 @@ namespace VideoGameTrackerBackend.Controllers
             _mediator = mediator;
         }
 
+        // TODO: I edited the below controller to use the non-test library. Revert later
         // GET: api/<VideoGamesController>
         [HttpGet]
-        public async Task<List<VideoGameModel>> GetAllVideoGames()
+        public async Task<string> GetAllVideoGames()
         {
-            return await _mediator.Send(new GetAllVideoGamesQuery());
+            return await _mediator.Send(new GetOneGameTestQuery());
         }
 
         // GET api/<VideoGamesController>/5

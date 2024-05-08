@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\VideoGameTrackerDemoLibrary\VideoGameTrackerDemoLibrary.csproj" />
+    <ProjectReference Include="..\VideoGameTrackerLibrary\VideoGameTrackerLibrary.csproj" />
   </ItemGroup>
 
 </Project>
