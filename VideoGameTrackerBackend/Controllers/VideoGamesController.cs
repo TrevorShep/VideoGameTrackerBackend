@@ -20,12 +20,11 @@ namespace VideoGameTrackerBackend.Controllers
             _mediator = mediator;
         }
 
-        // TODO: I edited the below controller to use the non-test library. Revert later
         // GET: api/<VideoGamesController>
         [HttpGet]
-        public async Task<string> GetAllVideoGames()
+        public async Task<List<VideoGameModel>> GetAllVideoGames()
         {
-            return await _mediator.Send(new GetOneGameTestQuery());
+            return await _mediator.Send(new GetAllVideoGamesQuery());
         }
 
         // GET api/<VideoGamesController>/5
