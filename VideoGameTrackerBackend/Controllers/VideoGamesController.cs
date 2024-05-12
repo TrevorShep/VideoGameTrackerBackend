@@ -23,9 +23,9 @@ namespace VideoGameTrackerBackend.Controllers
 
         // GET: api/<VideoGamesController>
         [HttpGet]
-        public async Task<GenresModelContainer> GetAllVideoGames()
+        public async Task<List<VideoGameModel>> GetAllVideoGames()
         {
-            return await _mediator.Send(new GetGenresQuery());
+            return await _mediator.Send(new GetAllVideoGamesQuery());
         }
 
         // GET api/<VideoGamesController>/5
