@@ -11,6 +11,8 @@ namespace VideoGameTrackerLibrary.Repositories.Interfaces
     {
         Task<GenresModelContainer> GetGenres();
 
+        Task<GenresModel> GetGenreById(int genreId);
+
         Task<string> GetOneGameTest();
     }
 }

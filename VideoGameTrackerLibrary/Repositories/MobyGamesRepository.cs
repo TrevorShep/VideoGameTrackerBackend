@@ -34,7 +34,7 @@ namespace VideoGameTrackerLibrary.Repositories
             return response;
         }
 
-        // TODO: Change the type of the Task to a model for genres
+        // Genres methods
         public async Task<GenresModelContainer> GetGenres()
         {
             HttpResponseMessage response = await FetchFromMobyGames("genres");
@@ -48,6 +48,14 @@ namespace VideoGameTrackerLibrary.Repositories
             {
                 throw new HttpRequestException($"Failed to fetch data: {response.StatusCode}");
             }
+        }
+
+        public async Task<GenresModel> GetGenreById(int id)
+        {
+            GenresModelContainer genresContainer = await GetGenres();
+
+            GenresModel genre = genresContainer.Genres.FirstOrDefault(x => x.GenreId == id);
+            return genre;
         }
 
         public async Task<string> GetOneGameTest()

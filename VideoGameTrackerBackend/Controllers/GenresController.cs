@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using VideoGameTrackerLibrary.Models;
-using VideoGameTrackerLibrary.Queries;
+using VideoGameTrackerLibrary.Queries.Genres;
 
 namespace VideoGameTrackerBackend.Controllers
 {
@@ -20,6 +20,12 @@ namespace VideoGameTrackerBackend.Controllers
         public async Task<GenresModelContainer> GetAllGenres()
         {
             return await _mediator.Send(new GetGenresQuery());
+        }
+
+        [HttpGet("{genreId}")]
+        public async Task<GenresModel> GetGenreById(int genreId)
+        {
+            return await _mediator.Send(new GetGenreByIdQuery(genreId));
         }
     }
 }

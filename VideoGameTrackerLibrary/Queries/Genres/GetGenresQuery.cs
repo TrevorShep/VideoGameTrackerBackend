@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using VideoGameTrackerLibrary.Models;
 
-namespace VideoGameTrackerLibrary.Queries
+namespace VideoGameTrackerLibrary.Queries.Genres
 {
     public class GetGenresQuery : IRequest<GenresModelContainer> { }
 }
