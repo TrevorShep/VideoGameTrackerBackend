@@ -5,6 +5,7 @@ using VideoGameTrackerDemoLibrary.Commands.Delete;
 using VideoGameTrackerDemoLibrary.Commands.Update;
 using VideoGameTrackerDemoLibrary.Models;
 using VideoGameTrackerDemoLibrary.Queries;
+using VideoGameTrackerLibrary.Models;
 using VideoGameTrackerLibrary.Queries;
 
 namespace VideoGameTrackerBackend.Controllers
@@ -22,9 +23,9 @@ namespace VideoGameTrackerBackend.Controllers
 
         // GET: api/<VideoGamesController>
         [HttpGet]
-        public async Task<List<VideoGameModel>> GetAllVideoGames()
+        public async Task<GenresModelContainer> GetAllVideoGames()
         {
-            return await _mediator.Send(new GetAllVideoGamesQuery());
+            return await _mediator.Send(new GetGenresQuery());
         }
 
         // GET api/<VideoGamesController>/5
